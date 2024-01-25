@@ -73,6 +73,17 @@ noremap <c-l> <c-w><c-l>
 " Close Tab
 map <leader>tc :q<CR>
 
+" <Tab> / <Tab-Backwards>                                                                                           
+nnoremap <S-Tab> <<
+nnoremap <Tab> >>
+inoremap <S-Tab> <C-d>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+xnoremap <Tab> >gv
+xnoremap <S-Tab> <gv
+snoremap <Tab> <C-o>>gv<C-g>
+snoremap <S-Tab> <C-o><gv<C-g>
+
 " Moving lines
 nnoremap <S-j> :m .+1<CR>==
 nnoremap <S-k> :m .-2<CR>==
