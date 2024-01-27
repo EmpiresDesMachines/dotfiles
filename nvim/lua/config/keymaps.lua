@@ -35,8 +35,8 @@ keymap.set('n', '<c-l>', '<c-w><c-l>', props)
 -- Moving lines
 keymap.set('n', '<S-j>', ':m .+1<CR>==', props)
 keymap.set('n', '<S-k>', ':m .-2<CR>==', props)
-keymap.set('v', '<S-k>', ":m '>+1<CR>gv=gv", props)
-keymap.set('v', '<S-k>', ":m '<-2<CR>gv-gv", props)
+keymap.set('v', '<S-j>', ":m '>+1<CR>gv=gv", props)
+keymap.set('v', '<S-k>', ":m '<-2<CR>gv=gv", props)
 
 -- Split Window
 keymap.set('n', '<leader>sv', ':vsplit<CR>', props)
