@@ -11,7 +11,6 @@ set.shiftround = false
 set.wrap = false
 vim.cmd[[au BufRead,BufNewFile *.md,*.txt setlocal wrap linebreak nolist]]
 
-
 -- Serach
 set.hlsearch = true
 set.incsearch = true
@@ -43,7 +42,7 @@ set.splitbelow = true
 set.autochdir = false
 set.iskeyword:append("-")
 set.mouse:append('a')
-set.clipboard:append('unnamedplus')
+set.clipboard = 'unnamedplus'
 set.modifiable = true
 set.encoding = "UTF-8"
 
@@ -56,5 +55,4 @@ vim.cmd[[au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "
 
 -- Automatically delete all trailing whitespace on save
 vim.cmd[[au BufWritePre * %s/\s\+$//e]]
-
 
