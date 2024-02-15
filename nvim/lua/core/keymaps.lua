@@ -95,5 +95,8 @@ autocmd("LspAttach", {
 		keymap.set("n", "]d", function()
 			vim.diagnostic.goto_prev()
 		end, opts)
+		keymap.set("n", "gl", function()
+			vim.diagnostic.open_float()
+		end, opts)
 	end,
 })
