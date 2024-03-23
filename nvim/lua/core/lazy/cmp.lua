@@ -31,10 +31,10 @@ return {
 				["<S-Space>"] = cmp.mapping.complete(),
 			}),
 			sources = cmp.config.sources({
-				{ name = "luasnip" }, -- For luasnip users.
 				{ name = "nvim_lsp" },
-				{ name = "path" },
+				{ name = "luasnip" }, -- For luasnip users.
 				{ name = "buffer" },
+				{ name = "path" },
 			}),
 			formatting = {
 				format = lspkind.cmp_format({
