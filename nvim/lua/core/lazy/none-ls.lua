@@ -15,6 +15,7 @@ return {
 			ensure_installed = {
 				"stylua", -- lua formatter
 				"prettier", -- prettier formatter
+				"prettierd",
 				"eslint_d", -- js linter
 			},
 		})
@@ -34,15 +35,27 @@ return {
 			sources = {
 				formatting.stylua, -- lua formatter
 
-				formatting.prettier.with({
+				formatting.prettierd.with({
+					disabled_filetypes = {
+						"markdown",
+						"md",
+					},
 					condition = function(utils)
-						return utils.root_has_file({ ".prettierrc" }) -- only enable if root has .prettierrc
+						return utils.root_has_file({
+							".prettierrc",
+							".prettierrc.js",
+							".prettierrc.cjs",
+							".prettier.config.js",
+						})
 					end,
+					env = {
+						PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/utils/.prettierrc"),
+					},
 				}),
 
 				diagnostics.eslint_d.with({ -- js/ts linter
 					condition = function(utils)
-						return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
+						return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslint.json" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
 					end,
 				}),
 			},

@@ -62,7 +62,8 @@ keymap.set("x", "<S-Tab>", "<gv", props)
 keymap.set("s", "<Tab>", "<C-o>>gv<C-g>", props)
 keymap.set("s", "<S-Tab>", "<C-o><gv<C-g>", props)
 
-vim.keymap.set("n", "<leader><leader>p", vim.lsp.buf.format, props)
+-- vim.keymap.set("n", "<leader><leader>p", vim.lsp.buf.format, props)
+vim.keymap.set("n", "<leader><leader>p", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", props)
 
 local augroup = vim.api.nvim_create_augroup
 local test = augroup("test", {})
