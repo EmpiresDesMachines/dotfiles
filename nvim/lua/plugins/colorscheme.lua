@@ -1,3 +1,10 @@
+-- return {
+--   'GlennLeo/cobalt2',
+--   priority = 999,
+--   config = function()
+--     vim.cmd("colorscheme cobalt2")
+--   end
+-- }
 return {
 	"lalitmee/cobalt2.nvim",
 	priority = 999,
@@ -84,10 +91,10 @@ return {
 -- 		require("onedark").load()
 --
 -- 		-- transparent background
--- 		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- 		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
--- 		vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
--- 		vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
+-- 		-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- 		-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- 		-- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+-- 		-- vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
 -- 	end,
 -- }
 
