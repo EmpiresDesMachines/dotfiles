@@ -1,1 +1,5 @@
-require("core")
+require("configs.settings")
+require("configs.keymaps")
+require("configs.lazy")
+-- require("colorbuddy")
+-- require("cobalt2")
