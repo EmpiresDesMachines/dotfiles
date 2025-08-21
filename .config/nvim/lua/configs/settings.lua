@@ -34,15 +34,6 @@ set.iskeyword:append("-")
 set.backspace = "indent,eol,start"
 
 set.wrap = false
-vim.cmd([[au BufRead,BufNewFile *.md,*.txt setlocal wrap linebreak]])
 set.showbreak = "↳"
 
--- Remove insert mode commands delay
-vim.cmd([[au InsertEnter * set timeoutlen=250]])
-vim.cmd([[au InsertLeave * set timeoutlen=1000]])
-
--- Restore the last cursor position
-vim.cmd([[au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]])
-
--- Automatically delete all trailing whitespace on save
-vim.cmd([[au BufWritePre * %s/\s\+$//e]])
+set.winborder = "rounded"

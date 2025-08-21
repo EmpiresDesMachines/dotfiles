@@ -5,6 +5,9 @@ local keymap = vim.keymap
 
 local props = { noremap = true, silent = true }
 
+-- Reload configuration without restart nvim
+keymap.set("n", "<leader>rc", ":so %<CR>", props)
+
 -- Map Escape
 keymap.set("i", "jj", "<Esc>", props)
 
@@ -31,6 +34,10 @@ keymap.set("n", "<c-h>", "<c-w><c-h>", props)
 keymap.set("n", "<c-j>", "<c-w><c-j>", props)
 keymap.set("n", "<c-k>", "<c-w><c-k>", props)
 keymap.set("n", "<c-l>", "<c-w><c-l>", props)
+
+-- Change split orientation
+keymap.set("n", "<leader>tk", "<C-w>t<C-w>K", props) -- change vertical to horizontal
+keymap.set("n", "<leader>th", "<C-w>t<C-w>H", props) -- change horizontal to vertical
 
 -- Moving lines
 keymap.set("n", "<S-j>", ":m .+1<CR>==", props)
@@ -68,47 +75,3 @@ vim.keymap.set("n", "<leader><leader>p", "<cmd>lua vim.lsp.buf.format({async = t
 -- Paste last thing yanked, not deleted
 vim.keymap.set("n", "<leader>p", '"0p<CR>', props)
 vim.keymap.set("n", "<leader>P", '"0P<CR>', props)
-
-local augroup = vim.api.nvim_create_augroup
-local test = augroup("test", {})
-
-local autocmd = vim.api.nvim_create_autocmd
-autocmd("LspAttach", {
-  group = test,
-  callback = function(e)
-    local opts = { buffer = e.buf }
-    keymap.set("n", "gd", function()
-      vim.lsp.buf.definition()
-    end, opts)
-    keymap.set("n", "<leader>K", function()
-      vim.lsp.buf.hover()
-    end, opts)
-    keymap.set("n", "<leader>vws", function()
-      vim.lsp.buf.workspace_symbol()
-    end, opts)
-    keymap.set("n", "<leader>vd", function()
-      vim.diagnostic.open_float()
-    end, opts)
-    keymap.set("n", "<leader>vca", function()
-      vim.lsp.buf.code_action()
-    end, opts)
-    keymap.set("n", "<leader>vrr", function()
-      vim.lsp.buf.references()
-    end, opts)
-    keymap.set("n", "<leader>vrn", function()
-      vim.lsp.buf.rename()
-    end, opts)
-    keymap.set("i", "<C-h>", function()
-      vim.lsp.buf.signature_help()
-    end, opts)
-    keymap.set("n", "[d", function()
-      vim.diagnostic.goto_next()
-    end, opts)
-    keymap.set("n", "]d", function()
-      vim.diagnostic.goto_prev()
-    end, opts)
-    keymap.set("n", "gl", function()
-      vim.diagnostic.open_float()
-    end, opts)
-  end,
-})

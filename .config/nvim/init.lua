@@ -1,5 +1,4 @@
 require("configs.settings")
+require("configs.autocmds")
 require("configs.keymaps")
 require("configs.lazy")
--- require("colorbuddy")
--- require("cobalt2")
