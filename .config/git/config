@@ -1,0 +1,55 @@
+[user]
+  name = EmpiresDesMachines
+  email = email@email.com
+  signingkey = gpg --list-secret-keys --keyid-format=long
+[core]
+	autocrlf = input
+	editor = nvim
+	excludesfile = ~/.config/git/.gitignore
+[alias]
+  l = "!. ~/.config/git/.githelpers && pretty_git_log"
+  la = "!git config -l | grep alias | cut -c 7-"
+  lg = "log --pretty=format:'%C(yellow)%h%Creset | %C(dim green)%ad%Creset | %C(cyan)%s%Creset%C(auto)%d%Creset | %C(#667788)[%an]%Creset%n' --graph --date=format:'%Y-%m-%d %H:%M:%S' --decorate --numstat"
+  ll = "!git lg -30"
+  # ls
+  f = log --name-status -i --grep
+
+  empty = commit --allow-empty
+  ours = "!f() { git co --ours $@ && git add $@; }; f"
+  theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+
+# stash
+  sl = stash list
+  sa = stash apply
+  ss = stash save
+
+  c = commit -m
+	s = status
+	unstage = reset HEAD
+	uncommit = reset --soft HEAD~1
+[init]
+  defaultBranch = main
+[push]
+  autoSetupRemote = true
+[commit]
+  verbose = true
+  gpgSign = true
+[rebase]
+  # autosquash = true
+
+[color]
+	ui = true
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "decorate"]
+	HEAD = cyan
+	branch = green
+	tag = blue bold
+[color "diff"]
+	meta = yellow bold
+	flag = magenta bold
+	old = red
+	new = green
