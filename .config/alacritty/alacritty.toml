@@ -6,6 +6,7 @@ general.import = [
 ]
 
 [window]
+decorations = "None"
 # opacity = 0.8
 # padding.x = 20
 # padding.y = 20
@@ -16,3 +17,21 @@ normal.family = "JetBrainsMono Nerd Font Mono"
 # normal.family = "Iosevka"
 # normal.family = "Operator Mono Lig"
 size = 17.0
+
+# normal = { family = "SauceCodePro Nerd Font Mono", style = "Medium" }
+# bold = { family = "SauceCodePro Nerd Font Mono", style = "Semibold" }
+# italic = { family = "SauceCodePro Nerd Font Mono", style = "Italic" }
+# size = 22.0
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[[keyboard.bindings]]
+key = "C"
+mods = "Alt"
+action = "Copy"
+
+[[keyboard.bindings]]
+key = "V"
+mods = "Alt"
+action = "Paste"
