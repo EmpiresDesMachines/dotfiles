@@ -1,11 +1,47 @@
 [user]
   name = EmpiresDesMachines
-  email = email@email.com
+  email = empiresdesmachines@gmail.com
   signingkey = gpg --list-secret-keys --keyid-format=long
 [core]
 	autocrlf = input
+  pager = delta
 	editor = nvim
 	excludesfile = ~/.config/git/.gitignore
+[diff]
+	algorithm = patience
+	compactionHeuristic = true
+	tool = nvimdiff
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\""
+[merge]
+	tool = nvimdiff4
+	prompt = false
+[mergetool "nvimdiff4"]
+  cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[rebase]
+  autosquash = false
+[commit]
+  verbose = true
+  gpgSign = true
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	features = side-by-side line-numbers decorations
+	navigate = true
+	whitespace-error-style = 22 reverse
+[delta "decorations"]
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
+	file-decoration-style = none
+[interactive]
+	diffFilter = delta --color-only
+[mergetool]
+	keepBackup = false
+[push]
+  autoSetupRemote = true
+[init]
+  defaultBranch = main
+
 [alias]
   l = "!. ~/.config/git/.githelpers && pretty_git_log"
   la = "!git config -l | grep alias | cut -c 7-"
@@ -16,41 +52,18 @@
   f = log --name-status -i --grep
 
   empty = commit --allow-empty
+  # empty = "!git commit -am\"[empty] Initial commit\" --allow-empty"
   ours = "!f() { git co --ours $@ && git add $@; }; f"
   theirs = "!f() { git co --theirs $@ && git add $@; }; f"
 
-# stash
-  sl = stash list
-  sa = stash apply
-  ss = stash save
+# stash {{{
+    # sl = stash list
+    # sa = stash apply
+    # ss = stash save
+    # }}}
 
   c = commit -m
 	s = status
 	unstage = reset HEAD
 	uncommit = reset --soft HEAD~1
-[init]
-  defaultBranch = main
-[push]
-  autoSetupRemote = true
-[commit]
-  verbose = true
-  gpgSign = true
-[rebase]
-  # autosquash = true
 
-[color]
-	ui = true
-
-[color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
-[color "decorate"]
-	HEAD = cyan
-	branch = green
-	tag = blue bold
-[color "diff"]
-	meta = yellow bold
-	flag = magenta bold
-	old = red
-	new = green
