@@ -9,15 +9,19 @@ return {
     { "antosha417/nvim-lsp-file-operations", config = true },
     "ibhagwan/fzf-lua",
   },
+
   config = function()
     -- import mason
     local mason = require("mason")
     local mason_lspconfig = require("mason-lspconfig")
     local mason_tool_installer = require("mason-tool-installer")
 
-    -- -- import lspconfig plugin
+    -- import lspconfig plugin
     -- local lspconfig = require("lspconfig")
-    -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    -- import cmp-nvim-lsp plugin
+    local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    -- used to enable autocompletion (assign to every lsp server config)
+    local capabilities = cmp_nvim_lsp.default_capabilities()
 
     local keymap = vim.keymap
 
@@ -43,7 +47,12 @@ return {
         "svelte",
         "lua_ls",
         "emmet_ls",
+        -- "efm",
       },
+    })
+
+    vim.lsp.config("*", {
+      capabilities = capabilities,
     })
 
     vim.lsp.config("lua_ls", {
@@ -71,8 +80,13 @@ return {
     mason_tool_installer.setup({
       ensure_installed = {
         "prettier", -- prettier formatter
+        -- "prettierd",
         "stylua", -- lua formatter
         "eslint_d",
+        -- "luacheck",
+        -- "fixjson",
+        -- "shellcheck",
+        -- "shfmt",
       },
     })
 
@@ -130,7 +144,7 @@ return {
         end, opts)
       end,
     })
-
+    --
     -- Change the Diagnostic symbols in the sign column (gutter)
     vim.diagnostic.config({
       virtual_text = false,

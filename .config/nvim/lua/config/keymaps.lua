@@ -1,6 +1,3 @@
--- set leader key to space
-vim.g.mapleader = " "
-
 local keymap = vim.keymap
 
 local props = { noremap = true, silent = true }
@@ -8,11 +5,17 @@ local props = { noremap = true, silent = true }
 -- Reload configuration without restart nvim
 keymap.set("n", "<leader>rc", ":so %<CR>", props)
 
+-- Edit config
+keymap.set("n", "<leader>ei", "<Cmd>e ~/.config/nvim/init.lua<CR>", props)
+
 -- Map Escape
 keymap.set("i", "jj", "<Esc>", props)
 
--- hlsearch Clear
--- keymap.set("n", "<leader>n", ":noh<CR>", props)
+-- Center screen when jumping
+keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
+keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
+keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
+keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
 
 -- Buffer shortcuts
 keymap.set("n", "<leader>w", ":w!<CR>", props)
@@ -20,6 +23,9 @@ keymap.set("n", "<leader>qq", ":bd<CR>", props)
 keymap.set("n", "<leader>qa", ":bufdo bd<CR>", props)
 keymap.set("n", "<leader>l", ":bnex<CR>", props)
 keymap.set("n", "<leader>h", ":bprevious<CR>", props)
+
+-- hlsearch Clear
+-- keymap.set("n", "<leader>n", ":noh<CR>", props)
 
 -- Immediately add a closing quotes or braces in insert mode
 -- keymap.set("i", "'", "''<esc>i", props)
@@ -56,7 +62,12 @@ keymap.set("n", "<leader>sv", ":vsplit<CR>", props)
 keymap.set("n", "<leader>sh", ":split<CR>", props)
 keymap.set("n", "<leader>sc", "<c-w>c", props)
 -- keymap.set("n", "<leader>sc", "<c-w>o", props)
--- keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", props)
+
+-- Resize Window
+keymap.set("n", "<C-Up>", "<Cmd>resize +2<CR>", { desc = "Increase window height" })
+keymap.set("n", "<C-Down>", "<Cmd>resize -2<CR>", { desc = "Decrease window height" })
+keymap.set("n", "<C-Left>", "<Cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
+keymap.set("n", "<C-Right>", "<Cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- <Tab> / <Tab-Backwards>
 keymap.set("n", "<Tab>", ">>", props)

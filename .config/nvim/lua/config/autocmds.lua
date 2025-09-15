@@ -11,23 +11,21 @@ autocmd("InsertLeave", { pattern = "*", command = "set timeoutlen=1000" })
 -- Don't auto commenting new lines
 autocmd("BufEnter", { pattern = "*", command = "set fo-=c fo-=r fo-=o" })
 
--- Restore the last cursor position
-augroup("RestoreCursor", { clear = true })
-autocmd("BufReadPost", {
-  group = "RestoreCursor",
-  pattern = "*",
-  callback = function(args)
-    local valid_line = vim.fn.line([['"]]) >= 1 and vim.fn.line([['"]]) < vim.fn.line("$")
-    local not_commit = vim.b[args.buf].filetype ~= "commit"
+-- Automatically delete all trailing whitespace on save
+autocmd("BufWritePre", { pattern = "*", command = ":%s/\\s\\+$//e" })
 
-    if valid_line and not_commit then
-      vim.cmd([[normal! g`"]])
+-- Restore last cursor position when reopening a file
+augroup("LastCursorGroup", { clear = true })
+autocmd("BufReadPost", {
+  group = "LastCursorGroup",
+  callback = function()
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    local lcount = vim.api.nvim_buf_line_count(0)
+    if mark[1] > 0 and mark[1] <= lcount then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
     end
   end,
 })
-
--- Automatically delete all trailing whitespace on save
-autocmd("BufWritePre", { pattern = "*", command = ":%s/\\s\\+$//e" })
 
 -- Highlight yanked
 augroup("YankHighlight", { clear = true })

@@ -21,6 +21,12 @@ require("lazy").setup({
     -- import your plugins
     { { import = "plugins" } },
   },
+  rtp = {
+    disabled_plugins = {
+      "netrw",
+      "netrwPlugin",
+    },
+  },
   -- colorscheme that will be used when installing plugins.
   -- install = { colorscheme = { "vim" } },
   install = { colorscheme = { "cobalt2" } },
