@@ -21,7 +21,7 @@ keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
 keymap.set("n", "<leader>w", ":w!<CR>", props)
 keymap.set("n", "<leader>qq", ":bd<CR>", props)
 keymap.set("n", "<leader>qa", ":bufdo bd<CR>", props)
-keymap.set("n", "<leader>l", ":bnex<CR>", props)
+keymap.set("n", "<leader>l", ":bnext<CR>", props)
 keymap.set("n", "<leader>h", ":bprevious<CR>", props)
 
 -- hlsearch Clear
