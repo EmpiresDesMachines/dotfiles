@@ -86,3 +86,6 @@ vim.keymap.set("n", "<leader><leader>p", "<cmd>lua vim.lsp.buf.format({async = t
 -- Paste last thing yanked, not deleted
 vim.keymap.set("n", "<leader>p", '"0p<CR>', props)
 vim.keymap.set("n", "<leader>P", '"0P<CR>', props)
+
+-- Execute selection with Node
+vim.keymap.set({ "v" }, "<leader>rn", ":'<,'>w !node<CR>", { desc = "Node Run Selected" })
