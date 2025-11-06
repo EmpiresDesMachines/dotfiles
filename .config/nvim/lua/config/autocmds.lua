@@ -37,3 +37,13 @@ autocmd("TextYankPost", {
     vim.highlight.on_yank({ higroup = "YankHighlight", timeout = 200 })
   end,
 })
+
+-- Syntax highlighting for dotenv files
+augroup("DotenvFT", { clear = true })
+autocmd({ "BufRead", "BufNewFile" }, {
+  group = "DotenvFT",
+  pattern = { ".env", ".env.*" },
+  callback = function()
+    vim.bo.filetype = "dosini"
+  end,
+})
